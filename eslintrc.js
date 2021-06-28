@@ -1,16 +1,11 @@
+const baseConfig = require('eslint-config-gsandf');
 const { packageJson } = require('read-pkg-up').sync();
 
 const hasReact = Boolean(
   packageJson && packageJson.dependencies && packageJson.dependencies.react
 );
 
-const baseConfig = hasReact
-  ? require('eslint-config-gsandf-react')
-  : require('eslint-config-gsandf');
-
-const baseConfigName = hasReact ? 'gsandf-react' : 'gsandf';
-
-const equivalents = ['prefer-const', 'semi', 'space-before-function-paren'];
+const equivalents = ['semi', 'space-before-function-paren'];
 
 function ruleFromBaseConfig(name) {
   const rule = baseConfig.rules[name];
@@ -31,7 +26,7 @@ function fromEntries(iterable) {
 }
 
 const config = {
-  extends: [baseConfigName],
+  extends: [hasReact ? 'gsandf-react' : 'gsandf'],
 
   plugins: ['@typescript-eslint'],
 
@@ -39,7 +34,7 @@ const config = {
     {
       extends: [
         'prettier',
-        baseConfigName,
+        hasReact ? 'gsandf-react' : 'gsandf',
         'plugin:@typescript-eslint/eslint-recommended'
       ],
 
@@ -63,6 +58,7 @@ const config = {
         'no-extra-semi': 'off',
         'no-unused-vars': 'off',
         'no-void': ['error', { allowAsStatement: true }],
+        'prefer-const': 'off',
 
         '@typescript-eslint/ban-ts-comment': ['warn'],
         '@typescript-eslint/consistent-type-assertions': [
