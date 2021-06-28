@@ -1,0 +1,49 @@
+{
+  "name": "eslint-config-gsandf-typescript",
+  "version": "3.0.0",
+  "description": "GS&F's extendable ESLint configuration for TypeScript",
+  "main": "eslintrc.js",
+  "repository": "https://github.com/gsandf/eslint-config-gsandf-typescript.git",
+  "author": "Blake Knight <bknight@gsandf.com> (http://blakek.me/)",
+  "license": "MIT",
+  "ava": {
+    "extensions": [
+      "js",
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "eslint.test.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "ignoredByWatcher": [
+      "!src/**"
+    ]
+  },
+  "peerDependencies": {
+    "eslint": ">=7",
+    "typescript": ">=4"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "eslint-config-gsandf": "^3.0.0",
+    "eslint-config-gsandf-react": "^3.0.0",
+    "read-pkg-up": "^7.0.1"
+  },
+  "devDependencies": {
+    "@blakek/array-split": "^2.0.1",
+    "@types/eslint": "^7.2.13",
+    "@types/node": "^15.12.5",
+    "ava": "^3.15.0",
+    "eslint": "^7.29.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  },
+  "scripts": {
+    "test": "ava"
+  }
+}
