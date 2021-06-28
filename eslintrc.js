@@ -11,10 +11,13 @@ function ruleFromBaseConfig(name) {
   const rule = baseConfig.rules[name];
 
   if (rule === undefined) {
-    throw new Error(`failed to find base rule with name ${name}`);
+    return 'off';
   }
 
-  if (typeof rule !== 'object') return rule;
+  if (typeof rule !== 'object') {
+    return rule;
+  }
+
   return JSON.parse(JSON.stringify(rule));
 }
 
@@ -55,10 +58,16 @@ const config = {
           ])
         ),
 
+        // Replace inherited ESLint rules with those from `@typescript-eslint`:
         'no-extra-semi': 'off',
+        '@typescript-eslint/no-extra-semi': 'error',
         'no-unused-vars': 'off',
-        'no-void': ['error', { allowAsStatement: true }],
+        '@typescript-eslint/no-unused-vars': 'warn',
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': 'error',
+
         'prefer-const': 'off',
+        'no-void': ['error', { allowAsStatement: true }],
 
         '@typescript-eslint/ban-ts-comment': ['warn'],
         '@typescript-eslint/consistent-type-assertions': [
@@ -80,7 +89,6 @@ const config = {
         ],
         '@typescript-eslint/no-explicit-any': 'warn',
         '@typescript-eslint/no-extra-non-null-assertion': 'error',
-        '@typescript-eslint/no-extra-semi': 'error',
         '@typescript-eslint/no-extraneous-class': [
           'error',
           { allowWithDecorator: true }
@@ -104,8 +112,6 @@ const config = {
         ],
         '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
         '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-        '@typescript-eslint/no-unused-vars': 'warn',
-        '@typescript-eslint/no-use-before-define': ['error'],
         '@typescript-eslint/no-var-requires': 'error',
         '@typescript-eslint/prefer-as-const': 'error',
         '@typescript-eslint/prefer-function-type': 'error',
