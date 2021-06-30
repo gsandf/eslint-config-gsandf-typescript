@@ -62,7 +62,15 @@ const config = {
         'no-extra-semi': 'off',
         '@typescript-eslint/no-extra-semi': 'error',
         'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': 'warn',
+        '@typescript-eslint/no-unused-vars': [
+          'warn',
+          {
+            args: 'none',
+            caughtErrors: 'none',
+            ignoreRestSiblings: true,
+            vars: 'all'
+          }
+        ],
         'no-use-before-define': 'off',
         '@typescript-eslint/no-use-before-define': [
           'error',
