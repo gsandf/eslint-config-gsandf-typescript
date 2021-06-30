@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-gsandf-typescript",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "GS&F's extendable ESLint configuration for TypeScript",
   "main": "eslintrc.js",
   "repository": "https://github.com/gsandf/eslint-config-gsandf-typescript.git",
