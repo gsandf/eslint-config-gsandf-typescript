@@ -99,8 +99,8 @@ const config = {
             singleline: { requireLast: false }
           }
         ],
-        '@typescript-eslint/no-base-to-string': 'error',
-        '@typescript-eslint/no-empty-function': ['off'],
+        '@typescript-eslint/no-base-to-string': 'warn',
+        '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-empty-interface': [
           'error',
           { allowSingleExtends: true }
