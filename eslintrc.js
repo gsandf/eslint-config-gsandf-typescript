@@ -64,7 +64,17 @@ const config = {
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'warn',
         'no-use-before-define': 'off',
-        '@typescript-eslint/no-use-before-define': 'error',
+        '@typescript-eslint/no-use-before-define': [
+          'error',
+          {
+            classes: false,
+            enums: false,
+            functions: false,
+            ignoreTypeReferences: true,
+            typedefs: false,
+            variables: false
+          }
+        ],
 
         'prefer-const': 'off',
         'no-void': ['error', { allowAsStatement: true }],
