@@ -22,17 +22,3 @@ export function myFuncOR(foo: string | null) {
 export function myFuncNC(foo: string | null) {
   return foo ?? 'a string';
 }
-
-// This warns but is not an error
-type T = {
-  a?: {
-    b?: {
-      c: string;
-      method?: () => void;
-    };
-  };
-};
-
-export function chaining(foo: T | null) {
-  return foo && foo.a && foo.a.b && foo.a.b.c;
-}
