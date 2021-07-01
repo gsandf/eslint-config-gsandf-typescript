@@ -1,9 +1,12 @@
+const { has } = require('@blakek/deep');
 const baseConfig = require('eslint-config-gsandf');
 const { packageJson } = require('read-pkg-up').sync();
 
-const hasReact = Boolean(
-  packageJson && packageJson.dependencies && packageJson.dependencies.react
-);
+const isDependentOn = dependencyName =>
+  has(['dependencies', dependencyName], packageJson) ||
+  has(['devDependencies', dependencyName], packageJson);
+
+const extendedConfigName = isDependentOn('react') ? 'gsandf-react' : 'gsandf';
 
 const equivalents = ['semi', 'space-before-function-paren'];
 
@@ -29,7 +32,7 @@ function fromEntries(iterable) {
 }
 
 const config = {
-  extends: [hasReact ? 'gsandf-react' : 'gsandf'],
+  extends: [extendedConfigName],
 
   plugins: ['@typescript-eslint'],
 
@@ -37,7 +40,7 @@ const config = {
     {
       extends: [
         'prettier',
-        hasReact ? 'gsandf-react' : 'gsandf',
+        extendedConfigName,
         'plugin:@typescript-eslint/eslint-recommended'
       ],
 
